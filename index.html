@@ -519,10 +519,11 @@
                 for (let i = 1; i <= data.count; i++) {
                     const fileName = `${data.prefix}${i}.jpg`;
                     
+                    // اینجا تگ loading="lazy" اضافه شده است
                     htmlContent += `
                         <div class="evidence-photo" onclick="toggleZoom(this)">
                             <span>Looking for: <br><b>${fileName}</b></span>
-                            <img src="${fileName}" alt="Evidence" onerror="this.style.display='none'">
+                            <img src="${fileName}" alt="Evidence" loading="lazy" onerror="this.style.display='none'">
                         </div>
                     `;
                 }
