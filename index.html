@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 7 Design Movements - Evidence</title>
+    <style>
+        /* پالت رنگی دقیق بر اساس اعداد RGB تصویر شما */
+        :root {
+            --coral: #E66F51;      /* 230, 111, 81 */
+            --orange: #F3A261;     /* 243, 162, 97 */
+            --yellow: #E9C46B;     /* 233, 196, 107 */
+            --teal: #2A9D8E;       /* 42, 157, 142 */
+            --dark-blue: #264653;  /* 38, 70, 83 */
+            --bg-color: #fcf9f2;   /* کرم روشن */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--dark-blue);
+            line-height: 1.6;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background-color: var(--dark-blue);
+            color: white;
+            padding: 20px 30px;
+            border-bottom: 5px solid var(--teal);
+        }
+
+        .header-top-bar {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 15px;
+        }
+
+        .logo-container {
+            background-color: white; 
+            padding: 10px 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .school-logo {
+            height: 70px; 
+            width: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .class-title-container {
+            flex-grow: 1;
+        }
+
+        .class-title-container h1 {
+            font-size: 1.6rem;
+            color: var(--yellow);
+            margin-bottom: 5px;
+        }
+
+        .class-title-container .class-subtitle {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--orange);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .ib-info {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            text-align: left;
+            border-left: 4px solid var(--teal);
+        }
+
+        .ib-info p { margin-bottom: 5px; }
+        .ib-info strong { color: var(--orange); }
+
+        /* واکنش‌گرا برای موبایل */
+        @media (max-width: 768px) {
+            .header-top-bar {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            .ib-info {
+                text-align: center;
+                border-left: none;
+                border-top: 4px solid var(--teal);
+            }
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px;
+            padding: 15px;
+            background-color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        nav button {
+            background-color: #e0e0e0;
+            border: none;
+            color: var(--dark-blue);
+            padding: 10px 15px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        nav button:hover { background-color: var(--yellow); }
+        nav button.active {
+            background-color: var(--teal);
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        /* --- MAIN CONTENT --- */
+        main {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .session-page {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .session-page.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .session-title {
+            font-size: 1.5rem;
+            color: var(--coral);
+            margin-bottom: 15px;
+            border-bottom: 3px solid var(--orange);
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid { grid-template-columns: 1fr; }
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-left: 6px solid var(--teal);
+        }
+
+        .info-card h3 {
+            color: var(--dark-blue);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .info-card p, .info-card ul { font-size: 0.95rem; margin-bottom: 8px; }
+        .info-card ul { margin-left: 20px; margin-top: 5px; }
+
+        /* استایل اختصاصی برای بخش شواهد ATL */
+        .atl-evidence-box {
+            background-color: #fdf4e3;
+            border-left: 4px solid var(--orange);
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: #444;
+        }
+
+        .command-terms {
+            background-color: var(--yellow);
+            color: var(--dark-blue);
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        /* --- IMAGE GALLERY (GRID) --- */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+            grid-auto-rows: 220px; 
+        }
+
+        .evidence-photo {
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10px;
+            color: #888;
+            font-size: 0.8rem;
+            border: 3px solid white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.4s ease; 
+        }
+
+        .evidence-photo.zoomed {
+            grid-column: span 2; 
+            grid-row: span 2;    
+            z-index: 10;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4); 
+            border-color: var(--yellow);
+        }
+
+        .evidence-photo img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+            z-index: 2;
+        }
+
+        .evidence-photo img:hover {
+            transform: scale(1.05);
+        }
+        
+        .evidence-photo.zoomed img:hover {
+            transform: none;
+        }
+
+        @media (max-width: 600px) {
+            .evidence-photo.zoomed {
+                grid-column: span 1; 
+                grid-row: span 2;
+            }
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--dark-blue);
+            font-size: 0.9rem;
+            margin-top: 50px;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-top-bar">
+            <div class="logo-container">
+                <img src="IB3.png" alt="School Logos" class="school-logo" onerror="this.style.display='none'; this.parentElement.innerHTML='[IB3.png]';">
+            </div>
+            <div class="class-title-container">
+                <h1>Grade 7: Design Movements Evidence</h1>
+                <div class="class-subtitle">DESIGN CLASS G7TH / 2026-2027</div>
+            </div>
+        </div>
+        <div class="ib-info">
+            <p><strong>Unit Title:</strong> Design Movements: Designing a Statement Watch Strap</p>
+            <p><strong>Key Concepts:</strong> Form, Function | <strong>Related Concepts:</strong> Aesthetics, Innovation</p>
+            <p><strong>Global Context:</strong> Orientation in Space and Time (Explorations: Civilizations, Heritage, Migration)</p>
+            <p><strong>Statement of Inquiry:</strong> Designers reinterpret the forms of historical movements to create functional objects that connect wearers to different times, places, and cultural moments.</p>
+        </div>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <button class="active" onclick="showPage('s1', this)">Session 1: Oct 4</button>
+        <button onclick="showPage('s2', this)">Session 2: Oct 11</button>
+        <button onclick="showPage('s3', this)">Session 3: Oct 18</button>
+        <button onclick="showPage('s4', this)">Session 4: Oct 25</button>
+        <button onclick="showPage('s5', this)">Session 5: Nov 1</button>
+        <button onclick="showPage('s6', this)">Session 6: Nov 8</button>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SESSION 1 -->
+        <div id="s1" class="session-page active">
+            <h2 class="session-title">Session 1: Oct 4, 2026 - Introduction to Bauhaus</h2>
+            <div class="content-grid">
+                <div class="info-card">
+                    <h3>Classroom Activity</h3>
+                    <p>Students were introduced to "Design Movements". In groups, they categorized mixed images and presented their findings. We then watched a video on the <strong>Bauhaus</strong> movement and discussed its key features.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Assignment</h3>
+                    <p>Create a handmade A3 collage poster about the Bauhaus movement based on the provided structure.</p>
+                </div>
+                <div class="info-card" style="grid-column: 1 / -1;">
+                    <h3>IB Connection, ATL & Command Terms</h3>
+                    <p><strong>ATL Focus:</strong> Self-Management (Organization) & Critical Thinking.</p>
+                    <div class="atl-evidence-box">
+                        <strong>Evidence:</strong> Students practiced organization by categorizing mixed images into logical groups and planning the layout for their upcoming handmade A3 collage.
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Command Terms:</strong></p>
+                    <div>
+                        <span class="command-terms">Identify</span>
+                        <span class="command-terms">Classify</span>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery" id="gallery-s1"></div>
+        </div>
+
+        <!-- SESSION 2 -->
+        <div id="s2" class="session-page">
+            <h2 class="session-title">Session 2: Oct 11, 2026 - Bauhaus Collages & Memphis</h2>
+            <div class="content-grid">
+                <div class="info-card">
+                    <h3>Classroom Activity</h3>
+                    <p>Students presented their Bauhaus collages. We held a <strong>Gallery Walk</strong> where students used star stickers to peer-assess each other's work. We then watched a video on the <strong>Memphis</strong> style and compared it with Bauhaus.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Assignment</h3>
+                    <p>Choose a simple everyday object from home. Design it in two styles: Memphis and Bauhaus. Annotate the poster with features for each style.</p>
+                </div>
+                <div class="info-card" style="grid-column: 1 / -1;">
+                    <h3>IB Connection, ATL & Command Terms</h3>
+                    <p><strong>ATL Focus:</strong> Self-Management (Affective Skills - Resilience) & Collaboration.</p>
+                    <div class="atl-evidence-box">
+                        <strong>Evidence:</strong> During the Gallery Walk, students practiced receiving constructive peer feedback (via star stickers) and managing their emotions/resilience when their work was critiqued.
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Command Terms:</strong></p>
+                    <div>
+                        <span class="command-terms">Compare</span>
+                        <span class="command-terms">Annotate</span>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery" id="gallery-s2"></div>
+        </div>
+
+        <!-- SESSION 3 -->
+        <div id="s3" class="session-page">
+            <h2 class="session-title">Session 3: Oct 18, 2026 - Art Deco & Bionic</h2>
+            <div class="content-grid">
+                <div class="info-card">
+                    <h3>Classroom Activity</h3>
+                    <p>Students presented their object designs. We watched videos and had a discussion on the <strong>Art Deco</strong> and <strong>Bionic</strong> design movements.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Assignment</h3>
+                    <p>Prepare for the upcoming interactive quiz and oral exam on all four styles (Bauhaus, Memphis, Art Deco, Bionic).</p>
+                </div>
+                <div class="info-card" style="grid-column: 1 / -1;">
+                    <h3>IB Connection, ATL & Command Terms</h3>
+                    <p><strong>ATL Focus:</strong> Self-Management (Organization & Time Management).</p>
+                    <div class="atl-evidence-box">
+                        <strong>Evidence:</strong> Students managed their time effectively to complete their dual-style object designs and independently organized their study materials to prepare for the upcoming oral exam.
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Command Terms:</strong></p>
+                    <div>
+                        <span class="command-terms">Describe</span>
+                        <span class="command-terms">Analyse</span>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery" id="gallery-s3"></div>
+        </div>
+
+        <!-- SESSION 4 -->
+        <div class="session-page" id="s4">
+            <h2 class="session-title">Session 4: Oct 25, 2026 - Art Deco Deep Dive</h2>
+            <div class="content-grid">
+                <div class="info-card">
+                    <h3>Classroom Activity</h3>
+                    <p>We watched a detailed video on <strong>Art Deco</strong>. Students presented their designs. We had another <strong>Gallery Walk</strong> with star stickers for peer assessment.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Assignment</h3>
+                    <p>No formal assignment. Preparation for next week's oral exam.</p>
+                </div>
+                <div class="info-card" style="grid-column: 1 / -1;">
+                    <h3>IB Connection, ATL & Command Terms</h3>
+                    <p><strong>ATL Focus:</strong> Self-Management (Reflection) & Communication.</p>
+                    <div class="atl-evidence-box">
+                        <strong>Evidence:</strong> Students demonstrated self-reflection by critically reviewing their own work against their peers' designs during the second Gallery Walk, identifying areas for their own improvement.
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Command Terms:</strong></p>
+                    <div>
+                        <span class="command-terms">Present</span>
+                        <span class="command-terms">Evaluate</span>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery" id="gallery-s4"></div>
+        </div>
+
+        <!-- SESSION 5 -->
+        <div class="session-page" id="s5">
+            <h2 class="session-title">Session 5: Nov 1, 2026 - Oral Exam & Summative Prep</h2>
+            <div class="content-grid">
+                <div class="info-card">
+                    <h3>Classroom Activity</h3>
+                    <p>Students took an interactive oral quiz. Meanwhile, they sketched designs for 4 Swatch watch straps based on Bauhaus, Memphis, Art Deco, and Bionic. This is the foundation for their Summative project.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Assignment</h3>
+                    <p>This sketching activity is the foundation for their final Summative project (customizing watch straps).</p>
+                </div>
+                <div class="info-card" style="grid-column: 1 / -1;">
+                    <h3>IB Connection, ATL & Command Terms</h3>
+                    <p><strong>ATL Focus:</strong> Self-Management (Managing State of Mind).</p>
+                    <div class="atl-evidence-box">
+                        <strong>Evidence:</strong> During the interactive oral exam, students demonstrated the ability to manage test anxiety and maintain focus while simultaneously sketching 4 complex watch strap designs under time pressure.
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Command Terms:</strong></p>
+                    <div>
+                        <span class="command-terms">Apply</span>
+                        <span class="command-terms">Design</span>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery" id="gallery-s5"></div>
+        </div>
+
+        <!-- SESSION 6 -->
+        <div class="session-page" id="s6">
+            <h2 class="session-title">Session 6: Nov 8, 2026 - Speculative Design</h2>
+            <div class="content-grid">
+                <div class="info-card">
+                    <h3>Classroom Activity</h3>
+                    <p>We watched the animated short film <strong>"Mr. Hublot"</strong>. We discussed the futuristic world and the concept of <strong>Speculative Design</strong> (asking "What if...?").</p>
+                </div>
+                <div class="info-card">
+                    <h3>Assignment</h3>
+                    <p>Students chose an everyday object and redesigned it for a future world like Mr. Hublot's. They presented their ideas.</p>
+                </div>
+                <div class="info-card" style="grid-column: 1 / -1;">
+                    <h3>IB Connection, ATL & Command Terms</h3>
+                    <p><strong>ATL Focus:</strong> Self-Management (Reflection) & Creative Thinking.</p>
+                    <div class="atl-evidence-box">
+                        <strong>Evidence:</strong> Students engaged in reflective thinking about future societies and adapted their ideas into presentations. They managed their creative process to design an everyday object for a futuristic context.
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Command Terms:</strong></p>
+                    <div>
+                        <span class="command-terms">Imagine</span>
+                        <span class="command-terms">Create</span>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery" id="gallery-s6"></div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>IB MYP Design Evidence Portfolio | Teacher: Reyhaneh Sanei | 2026-2027</p>
+    </footer>
+
+    <script>
+        const imageData = {
+            'gallery-s1': { prefix: '4OCTOBER', count: 7 },     
+            'gallery-s2': { prefix: '11OCTOBER', count: 29 },   
+            'gallery-s3': { prefix: '18OCTOBER', count: 17 },   
+            'gallery-s4': { prefix: '25OCTOBER', count: 12 },   
+            'gallery-s5': { prefix: '1NOVEMBER', count: 26 },   
+            'gallery-s6': { prefix: '8NOVEMBER', count: 26 }
+        };
+
+        function generateGalleries() {
+            for (const [galleryId, data] of Object.entries(imageData)) {
+                const galleryElement = document.getElementById(galleryId);
+                if (!galleryElement) continue;
+
+                let htmlContent = '';
+                for (let i = 1; i <= data.count; i++) {
+                    const fileName = `${data.prefix}${i}.jpg`;
+                    
+                    htmlContent += `
+                        <div class="evidence-photo" onclick="toggleZoom(this)">
+                            <span>Looking for: <br><b>${fileName}</b></span>
+                            <img src="${fileName}" alt="Evidence" onerror="this.style.display='none'">
+                        </div>
+                    `;
+                }
+                galleryElement.innerHTML = htmlContent;
+            }
+        }
+
+        function showPage(pageId, btn) {
+            document.querySelectorAll('.session-page').forEach(page => page.classList.remove('active'));
+            document.querySelectorAll('nav button').forEach(button => button.classList.remove('active'));
+            
+            document.getElementById(pageId).classList.add('active');
+            btn.classList.add('active');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleZoom(photoDiv) {
+            const isAlreadyZoomed = photoDiv.classList.contains('zoomed');
+            document.querySelectorAll('.evidence-photo').forEach(el => el.classList.remove('zoomed'));
+            if (!isAlreadyZoomed) {
+                photoDiv.classList.add('zoomed');
+            }
+        }
+
+        window.onload = generateGalleries;
+    </script>
+</body>
+</html>
